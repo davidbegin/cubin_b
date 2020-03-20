@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+./cube | lolcat
+sleep 26
+tmux select-pane -t 1
+
+tmux split-window -v
+tmux select-layout tiled
+tmux resize-pane -U 2
+tmux send-keys "asciiquarium | lolcat" C-m
+tmux select-pane -t 0
+./cube_loop

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+while true; do
+  ./cube | lolcat
+  sleep 1
+  clear
+done

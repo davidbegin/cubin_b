@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+clear
+
+tmux split-window -h
+tmux send-keys "./cube_spiral" C-m
+tmux select-pane -t 0
+tmux send-keys "./stopwatch" C-m
+tmux -2 attach-session -t make_workflow

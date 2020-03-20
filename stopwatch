@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+clear
+
+# Supposed to hide the cursor!
+tput civis
+
+date1=`date +%s`; while true; do
+  COMMAND=$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)
+  echo -ne "\n\n\t\t$COMMAND\n\n" | lolcat -a
+
+    read -t 0.25 -N 1 input
+    if [[ $input = "q" ]] || [[ $input = "Q" ]] || [[ $input == $'\x0a' ]]; then
+        echo
+        break 
+    fi
+
+ # Following code clears previously printed lines
+ # Calculate number of lines for the output previously printed
+ LINES=$(echo "$COMMAND" | wc -l) 
+ for (( i=1; i <= $(($LINES)); i++ ));do
+   # Move cursor up by one line
+   tput cuu1
+   # Clear the line
+   tput el
+  done
+
+done
+
+tput cvvis
